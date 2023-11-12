@@ -9,9 +9,32 @@
 если это квадрат, и False в противном случае
 """
 
+from math import sqrt
+
 
 class Rectangle:
-    pass
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2*(self.width + self.height)
+
+    @classmethod
+    def from_diagonal(cls, diagonal, aspect_ratio):
+        width = diagonal / sqrt(aspect_ratio)
+        height = diagonal / sqrt(aspect_ratio)
+        return cls(width, height)
+
+    @staticmethod
+    def is_square(width, height):
+        if width == height:
+            return True
+        else:
+            return False
 
 
 rectangle = Rectangle(4, 5)
